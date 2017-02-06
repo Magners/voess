@@ -1,0 +1,84 @@
+<div>
+    <h2 data-translate="voessApp.video.home.title">Videos</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="video.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  data-translate="voessApp.video.home.createLabel">
+                        Create new Video
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                    <th><span data-translate="global.field.id">ID</span></th>
+                    <th><span data-translate="voessApp.video.videoName">Video Name</span></th>
+                    <th><span data-translate="voessApp.video.videoDuration">Video Duration</span></th>
+                    <th><span data-translate="voessApp.video.videoDate">Video Date</span></th>
+                    <th><span data-translate="voessApp.video.videoViewerCount">Video Viewer Count</span></th>
+                    <th><span data-translate="voessApp.video.videoViewerCountLive">Video Viewer Count Live</span></th>
+                    <th><span data-translate="voessApp.video.videoUrl">Video Url</span></th>
+                    <th><span data-translate="voessApp.video.team1">Team 1</span></th>
+                    <th><span data-translate="voessApp.video.team2">Team 2</span></th>
+                    <th><span data-translate="voessApp.video.tournament">Tournament</span></th>
+                    <th><span data-translate="voessApp.video.player">Player</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="video in vm.videos track by video.id">
+                    <td><a ui-sref="video-detail({id:video.id})">{{video.id}}</a></td>
+                    <td>{{video.videoName}}</td>
+                    <td>{{video.videoDuration}}</td>
+                    <td>{{video.videoDate | date:'medium'}}</td>
+                    <td>{{video.videoViewerCount}}</td>
+                    <td>{{video.videoViewerCountLive}}</td>
+                    <td>{{video.videoUrl}}</td>
+                    <td>
+                        <a ui-sref="team-detail({id:video.team1.id})">{{video.team1.teamName}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="team-detail({id:video.team2.id})">{{video.team2.teamName}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="tournament-detail({id:video.tournament.id})">{{video.tournament.tournamentName}}</a>
+                    </td>
+                    <td>
+                        <span ng-repeat="player in video.players">
+                            <a class="form-control-static" ui-sref="player-detail({id: player.id})">{{player.id}}</a>{{$last ? '' : ', '}}
+                        </span>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="video-detail({id:video.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="video.edit({id:video.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="video.delete({id:video.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "player",
+            "otherEntityName": "player",
+            "otherEntityField": "playerName"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "team",
+            "otherEntityName": "team",
+            "otherEntityField": "teamName"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "startDateTime",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "finshDateTime",
+            "fieldType": "ZonedDateTime"
+        }
+    ],
+    "changelogDate": "20170119155313",
+    "entityTableName": "team_former",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no"
+}
